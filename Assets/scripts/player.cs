@@ -56,7 +56,7 @@ public class player : MonoBehaviour
     {
         if (!Dead)
         {
-            hungerscript.losehunger(5f);
+            //hungerscript.losehunger(5f);
             moveInput = value.Get<Vector2>();
             if (moveInput != Vector2.zero)
             {
