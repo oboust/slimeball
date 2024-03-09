@@ -27,7 +27,7 @@ public class InteractionSystem : MonoBehaviour
     public Text examineText;
     public bool isExamining;
     public bool isGrabbing;
-    
+    public bool isCuttable;
 
     private void OnDrawGizmosSelected()
     {
@@ -93,6 +93,7 @@ public class InteractionSystem : MonoBehaviour
                 new Vector3(grabbedObject.transform.position.x, grabbedObjectYValue, grabbedObject.transform.position.z);
             //null the grabbed object reference
             grabbedObject = null;
+            isCuttable = false;
         }
         //Check if we have nothing grabbed grab the detected item
         else
@@ -108,6 +109,10 @@ public class InteractionSystem : MonoBehaviour
             //Adjust the position of the grabbed object to be closer to hands                        
             grabbedObject.transform.localPosition = grabPoint.localPosition;
         }
+    }
+    public void canCut()
+    {
+        isCuttable = true;
     }
 
     private void OnInteract()

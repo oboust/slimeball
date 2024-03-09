@@ -16,6 +16,8 @@ public class player : MonoBehaviour
     public Animator animator;
     public bool Dead;
     hungerbar hungerscript;
+    public Vector2 lastMotionVector;
+    bool moving;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,19 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        if (horizontal != 0 || vertical != 0)
+        {
+            lastMotionVector = new Vector2(
+                horizontal,
+                vertical
+                ).normalized;
+
+            animator.SetFloat("lastHorizontal", horizontal);
+            animator.SetFloat("lastVertical", vertical);
+        }
     }
     void FixedUpdate() 
     {
